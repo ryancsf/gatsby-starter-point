@@ -3,7 +3,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { TimelineMax, Back, Power1 } from "gsap"
 import TransitionLink, { TransitionPortal } from "gatsby-plugin-transition-link"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -81,7 +81,7 @@ class Tag extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={tag} />
-        <div ref={n => (this.mod = n)}>
+        <div ref={(n) => (this.mod = n)}>
           <h2>#{tag}</h2>
           <ul className="blog-list">
             {edges.map(({ node }) => {
@@ -111,13 +111,11 @@ class Tag extends React.Component {
               )
             })}
           </ul>
-          <AniLink cover direction="down" bg="#8c61ff" to="/tags">
-            All tags
-          </AniLink>
+          <Link to="/tags">All tags</Link>
         </div>
         <TransitionPortal>
           <div
-            ref={n => (this.cover = n)}
+            ref={(n) => (this.cover = n)}
             style={{
               position: "fixed",
               background: "#8c61ff",

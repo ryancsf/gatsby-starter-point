@@ -3,7 +3,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { kebabCase } from "lodash"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -17,16 +17,11 @@ const Tags = ({ data }) => {
         <SEO title="Tags" />
         <h2>Tags</h2>
         <ul>
-          {allTags.map(tag => (
+          {allTags.map((tag) => (
             <li key={tag.fieldValue}>
-              <AniLink
-                cover
-                direction="left"
-                bg="#8c61ff"
-                to={`/tags/${kebabCase(tag.fieldValue)}`}
-              >
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}`}>
                 {tag.fieldValue} ({tag.totalCount})
-              </AniLink>
+              </Link>
             </li>
           ))}
         </ul>

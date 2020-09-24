@@ -1,5 +1,5 @@
 import React from "react"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
 import Headroom from "react-headroom"
@@ -12,28 +12,24 @@ class Header extends React.Component {
       <header>
         <Headroom>
           <div className="navbar">
-            <h1>
-              <AniLink cover direction="down" bg="#8c61ff" to="/">
-                {siteTitle}
-              </AniLink>
-            </h1>
+            <h2 className="site-title">
+              <Link to="/">{siteTitle}</Link>
+            </h2>
 
             <ThemeToggler>
               {({ theme, toggleTheme }) => (
                 <label className="tog">
                   <input
                     type="checkbox"
-                    onChange={e =>
+                    onChange={(e) =>
                       toggleTheme(e.target.checked ? "dark" : "light")
                     }
                     checked={theme === "dark"}
                   />
                   {theme === "dark" ? (
-                    <div className="on">
-                    </div>
+                    <div className="on"></div>
                   ) : (
-                    <div className="off">
-                    </div>
+                    <div className="off"></div>
                   )}
                 </label>
               )}
